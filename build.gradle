@@ -2,6 +2,7 @@ buildscript {
     def versions = [
             hilt:"2.40.5",
             livedata_ktx: "2.5.0",
+            lottie:"5.2.0",
             navigation:"2.5.0"
     ]
 
@@ -10,6 +11,10 @@ buildscript {
     }
 
     ext {
+        baseLibraries = [
+                "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_ktx",
+        ]
+
         commonLibraries = [
                 "com.google.dagger:hilt-android:$versions.hilt",
                 "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_ktx",
@@ -19,6 +24,10 @@ buildscript {
 
         commonKapt = [
                 "com.google.dagger:hilt-android-compiler:$versions.hilt"
+        ]
+
+        featureLibraries = [
+                "com.airbnb.android:lottie:$versions.lottie"
         ]
     }
 }
