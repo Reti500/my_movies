@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyMovies"
 include ':app'
+include ':shared:movies'
+include ':shared:entities'
+include ':base:base'
+include ':feature:movies'

@@ -1,3 +1,28 @@
+buildscript {
+    def versions = [
+            hilt:"2.40.5",
+            livedata_ktx: "2.5.0",
+            navigation:"2.5.0"
+    ]
+
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+    }
+
+    ext {
+        commonLibraries = [
+                "com.google.dagger:hilt-android:$versions.hilt",
+                "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_ktx",
+                "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+                "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+        ]
+
+        commonKapt = [
+                "com.google.dagger:hilt-android-compiler:$versions.hilt"
+        ]
+    }
+}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.2.1' apply false
