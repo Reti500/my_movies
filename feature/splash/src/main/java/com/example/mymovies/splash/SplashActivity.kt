@@ -1,14 +1,16 @@
 package com.example.mymovies.splash
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.lifecycle.lifecycleScope
+import com.example.mymovies.base.extensions.navigateToActivity
+import com.example.mymovies.base.utils.FlowTimer
+import com.example.mymovies.movies.MoviesActivity
+import com.example.mymovies.splash.constants.Constants
 import com.example.mymovies.splash.databinding.ActivitySplashBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,5 +22,13 @@ class SplashActivity : AppCompatActivity() {
 
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        FlowTimer.countDown(Constants.SPLASH_DURATION)
+            .onEach { if (it == 0L) { goToMoviesActivity() } }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun goToMoviesActivity() {
+        navigateToActivity(MoviesActivity::class.java, true)
     }
 }

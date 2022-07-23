@@ -12,5 +12,14 @@ class FlowTimer {
                 delay(period)
             }
         }
+
+        fun countDown(duration: Long, interval: Long = 1000) = flow {
+            var initial = duration
+            while (initial >= 0) {
+                emit(initial)
+                delay(interval)
+                initial -= 1
+            }
+        }
     }
 }

@@ -49,4 +49,5 @@ dependencies {
     // Shared dependencies
     implementation featureLibraries
     implementation project(path: ':base:base')
+    implementation project(path: ':feature:movies')
 }
