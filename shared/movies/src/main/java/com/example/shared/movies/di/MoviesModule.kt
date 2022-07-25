@@ -1,5 +1,7 @@
 package com.example.shared.movies.di
 
+import com.example.mymovies.shared.local.dao.MovieDetailDao
+import com.example.mymovies.shared.local.dao.MoviesDao
 import com.example.shared.movies.core.MoviesRemoteDataSource
 import com.example.shared.movies.core.MoviesRepository
 import com.example.shared.movies.core.MoviesService
@@ -26,7 +28,15 @@ object MoviesModule {
         MoviesRemoteDataSourceImp(service = service)
 
     @Provides
-    fun providesMoviesRepository(remote: MoviesRemoteDataSource): MoviesRepository =
-        MoviesRepositoryImp(remoteDataSource = remote)
+    fun providesMoviesRepository(
+        remote: MoviesRemoteDataSource,
+        moviesDao: MoviesDao,
+        movieDetailDao: MovieDetailDao
+    ): MoviesRepository =
+        MoviesRepositoryImp(
+            remoteDataSource = remote,
+            moviesDao = moviesDao,
+            movieDetailDao = movieDetailDao
+        )
 
 }

@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/feature/splash" />
             <option value="$PROJECT_DIR$/shared" />
             <option value="$PROJECT_DIR$/shared/entities" />
+            <option value="$PROJECT_DIR$/shared/local" />
             <option value="$PROJECT_DIR$/shared/movies" />
           </set>
         </option>

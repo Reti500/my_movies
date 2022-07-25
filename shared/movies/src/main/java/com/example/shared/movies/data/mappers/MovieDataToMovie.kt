@@ -6,6 +6,12 @@ import com.example.shared.movies.data.responses.MoviesResponse
 
 fun mapMovieResponseToMovies() : Mapper<MoviesResponse, List<Movie>> = { resp ->
     resp.results.map {
-        Movie(it.title)
+        Movie(
+            id = it.id,
+            posterPath = it.posterPath,
+            title = it.title,
+            voteAverage = it.voteAverage,
+            category = ""
+        )
     }
 }

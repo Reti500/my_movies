@@ -40,14 +40,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // Shared libraries
+    // Shared dependencies
     implementation sharedLibraries
-    kapt commonKapt
-
-    // Base
-    implementation project(path: ':base:base')
+    annotationProcessor sharedAnnotation
+    kapt sharedKapt
 
     // Shared
     implementation project(path: ':shared:entities')
-    implementation project(path: ':shared:local')
 }
