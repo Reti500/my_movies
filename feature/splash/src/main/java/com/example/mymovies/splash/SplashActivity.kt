@@ -27,8 +27,6 @@ class SplashActivity : AppCompatActivity() {
         FlowTimer.countDown(Constants.SPLASH_DURATION)
             .onEach { if (it == 0L) { goToMoviesActivity() } }
             .launchIn(lifecycleScope)
-
-        Log.e("Splash", "Aqui")
     }
 
     private fun goToMoviesActivity() {

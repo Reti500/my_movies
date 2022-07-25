@@ -23,6 +23,7 @@ android {
             buildConfigField "String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"54818948a9b447783cd262129dec39ba\""
             buildConfigField "String", "API_LANG", "\"es-MX\""
+            buildConfigField "String", "API_IMAGE_BASE_URL", "\"https://image.tmdb.org/t/p/w500\""
         }
 
         debug {
@@ -30,6 +31,7 @@ android {
             buildConfigField "String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"54818948a9b447783cd262129dec39ba\""
             buildConfigField "String", "API_LANG", "\"es-MX\""
+            buildConfigField "String", "API_IMAGE_BASE_URL", "\"https://image.tmdb.org/t/p/w500\""
         }
     }
     compileOptions {

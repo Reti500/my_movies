@@ -5,21 +5,25 @@ buildscript {
             lottie:"5.2.0",
             logging_interceptor:"4.2.1",
             navigation:"2.5.0",
+            picasso:"2.71828",
             retrofit:"2.7.2",
-            room:"2.4.2"
+            room:"2.4.2",
+            safe_args:"2.5.0"
     ]
 
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.safe_args"
     }
 
     ext {
         baseLibraries = [
                 "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_ktx",
-                "com.squareup.retrofit2:retrofit:$versions.retrofit",
                 "com.google.dagger:hilt-android:$versions.hilt",
                 "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor",
                 "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+                "com.squareup.retrofit2:retrofit:$versions.retrofit",
+                "com.squareup.picasso:picasso:$versions.picasso"
         ]
 
         commonLibraries = [

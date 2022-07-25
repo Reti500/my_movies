@@ -4,9 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movies_nav_graph"
     app:startDestination="@id/moviesFragment">
+
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.example.mymovies.movies.presentation.movies.MoviesFragment"
-        android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        android:label="@string/movies"
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.mymovies.movies.presentation.detail.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

@@ -20,7 +20,7 @@ object MoviesModule {
 
     @Provides
     @Singleton
-    fun providesCounterService(retrofit: Retrofit): MoviesService =
+    fun providesMoviesService(retrofit: Retrofit): MoviesService =
         retrofit.create(MoviesService::class.java)
 
     @Provides

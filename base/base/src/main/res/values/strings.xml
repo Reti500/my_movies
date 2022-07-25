@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Mis peliculas</string>
+
+    <!-- Movies -->
+    <string name="movies">Peliculas</string>
+    <string name="top_rated">Mejores calificadas</string>
+    <string name="now_playing">Reproduciendo ahora</string>
 </resources>
