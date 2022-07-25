@@ -1,6 +1,5 @@
 package com.example.mymovies.shared.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,5 +12,5 @@ interface MovieDetailDao {
     suspend fun insertOne(mDetail: MovieDetail)
 
     @Query("SELECT * FROM movie_details WHERE id = :movieId")
-    fun get(movieId: Int): LiveData<MovieDetail>
+    fun get(movieId: Int): MovieDetail
 }

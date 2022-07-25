@@ -3,6 +3,7 @@ package com.example.shared.movies.data.repository
 import com.example.mymovies.base.data.Resource
 import com.example.mymovies.base.errors.RemoteDataError
 import com.example.mymovies.entities.Movie
+import com.example.mymovies.entities.MovieDetail
 import com.example.mymovies.entities.utils.MovieCategory
 import com.example.mymovies.shared.local.dao.MovieDetailDao
 import com.example.mymovies.shared.local.dao.MoviesDao
@@ -34,6 +35,42 @@ class MoviesRepositoryImp @Inject constructor(
             when(t) {
                 is RemoteDataError.NetWorkError -> emit(Resource.NetworkError())
                 else -> emit(Resource.Failure(0, "", emptyList()))
+            }
+        }
+    }.flowOn(Dispatchers.IO)
+
+    override fun getNowPlayingMovies(): Flow<Resource<List<Movie>>> = flow {
+        emit(Resource.Loading())
+        emit(Resource.Done(data = moviesDao.getAll(MovieCategory.NowPlaying.name)))
+
+        try {
+            val remoteData = remoteDataSource.getNowPlayingMovies()
+
+            moviesDao.insertAll(remoteData.map { m -> m.copy(category = MovieCategory.NowPlaying.name) })
+
+            emit(Resource.Done(data = remoteData))
+        } catch (t: Throwable) {
+            when(t) {
+                is RemoteDataError.NetWorkError -> emit(Resource.NetworkError())
+                else -> emit(Resource.Failure(0, "", emptyList()))
+            }
+        }
+    }.flowOn(Dispatchers.IO)
+
+    override fun getMovieDetail(id: Int): Flow<Resource<MovieDetail>> = flow<Resource<MovieDetail>> {
+        emit(Resource.Loading())
+        emit(Resource.Done(data = movieDetailDao.get(id)))
+
+        try {
+            val remoteData = remoteDataSource.getMovieDetail(id)
+
+            movieDetailDao.insertOne(remoteData)
+
+            emit(Resource.Done(data = remoteData))
+        } catch (t: Throwable) {
+            when(t) {
+                is RemoteDataError.NetWorkError -> emit(Resource.NetworkError())
+                else -> emit(Resource.Failure(0, "", null))
             }
         }
     }.flowOn(Dispatchers.IO)
