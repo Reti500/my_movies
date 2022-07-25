@@ -1,6 +1,7 @@
 package com.example.mymovies.splash
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +27,8 @@ class SplashActivity : AppCompatActivity() {
         FlowTimer.countDown(Constants.SPLASH_DURATION)
             .onEach { if (it == 0L) { goToMoviesActivity() } }
             .launchIn(lifecycleScope)
+
+        Log.e("Splash", "Aqui")
     }
 
     private fun goToMoviesActivity() {

@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -18,6 +20,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"54818948a9b447783cd262129dec39ba\""
+            buildConfigField "String", "API_LANG", "\"es-MX\""
+        }
+
+        debug {
+            debuggable true
+            buildConfigField "String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"54818948a9b447783cd262129dec39ba\""
+            buildConfigField "String", "API_LANG", "\"es-MX\""
         }
     }
     compileOptions {
@@ -44,4 +56,5 @@ dependencies {
 
     // Shared dependencies
     implementation baseLibraries
+    kapt commonKapt
 }

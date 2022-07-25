@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mymovies.movies">
+
     <application>
         <activity
             android:name=".MoviesActivity"
-            android:launchMode="singleTop" />
+            android:exported="false"
+            android:label="@string/title_activity_movies"
+            android:theme="@style/Theme.MyMovies" />
     </application>
+
 </manifest>
