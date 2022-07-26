@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Mis peliculas</string>
 
+    <!-- Common -->
+    <string name="search">Buscar</string>
+
     <!-- Movies -->
     <string name="movies">Peliculas</string>
+    <string name="detail">Detalle</string>
     <string name="top_rated">Mejores calificadas</string>
     <string name="now_playing">Reproduciendo ahora</string>
 </resources>

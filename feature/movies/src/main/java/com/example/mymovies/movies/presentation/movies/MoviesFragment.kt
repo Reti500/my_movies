@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mymovies.entities.Movie
 import com.example.mymovies.movies.R
 import com.example.mymovies.movies.databinding.FragmentMoviesBinding
 import com.example.mymovies.movies.presentation.adapters.MoviesAdapter
@@ -27,22 +29,37 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
         binding = FragmentMoviesBinding.bind(view)
 
-        moviesViewModel.loadTopRatedMovies()
-        moviesViewModel.loadNowPlayingMovies()
+        setupUI()
+        setupObservers()
+        executeData()
+    }
+
+    private fun setupUI() {
+        binding.searchMovieEt.addTextChangedListener { e ->
+            moviesViewModel.setFilter(e.toString())
+        }
+    }
+
+    private fun setupObservers() {
         topRatedMoviesObserver()
         nowPlayingMoviesObserver()
     }
 
+    private fun executeData() {
+        moviesViewModel.loadTopRatedMovies()
+        moviesViewModel.loadNowPlayingMovies()
+    }
+
     private fun topRatedMoviesObserver() =
         moviesViewModel.topRatedMovies.observe(viewLifecycleOwner) { movies ->
-            binding.topRatedMoviesRV.adapter = MoviesAdapter(movies) { goToMovieDetail(it.id) }
+            binding.topRatedMoviesRV.adapter = getAdapter(movies ?: emptyList())
             binding.topRatedMoviesRV.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
     private fun nowPlayingMoviesObserver() =
         moviesViewModel.nowPlayingMovies.observe(viewLifecycleOwner) { movies ->
-            binding.nowPlayingMoviesRV.adapter = MoviesAdapter(movies) { goToMovieDetail(it.id) }
+            binding.nowPlayingMoviesRV.adapter = getAdapter(movies ?: emptyList())
             binding.nowPlayingMoviesRV.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
@@ -54,4 +71,9 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
             )
         findNavController().navigate(action)
     }
+
+    private fun getAdapter(l: List<Movie>) : MoviesAdapter =
+        MoviesAdapter { goToMovieDetail(it.id) }.apply {
+            setItems(l)
+        }
 }

@@ -10,9 +10,11 @@
         <entry key="feature/movies/src/main/res/layout/activity_movies.xml" value="0.2947916666666667" />
         <entry key="feature/movies/src/main/res/layout/activity_new.xml" value="0.15520833333333334" />
         <entry key="feature/movies/src/main/res/layout/content_movies.xml" value="0.23148148148148148" />
+        <entry key="feature/movies/src/main/res/layout/fragment_movie_detail.xml" value="0.2947916666666667" />
         <entry key="feature/movies/src/main/res/layout/fragment_movies.xml" value="0.2875" />
         <entry key="feature/movies/src/main/res/layout/fragmet_movies.xml" value="0.2947916666666667" />
         <entry key="feature/movies/src/main/res/layout/item_movie.xml" value="0.29375" />
+        <entry key="feature/movies/src/main/res/menu/movies_menu.xml" value="0.15520833333333334" />
         <entry key="feature/splash/src/main/res/layout/activity_splash.xml" value="0.2947916666666667" />
       </map>
     </option>

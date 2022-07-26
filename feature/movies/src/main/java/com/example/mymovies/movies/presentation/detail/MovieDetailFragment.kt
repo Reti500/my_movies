@@ -29,5 +29,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private fun movieDetailObserver() =
         detailViewModel.movie.observe(viewLifecycleOwner) {
             Log.e("Detail", "Data -> $it")
+            binding.movie = it
+            binding.executePendingBindings()
         }
 }
